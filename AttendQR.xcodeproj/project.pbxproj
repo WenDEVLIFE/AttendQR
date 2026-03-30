@@ -13,6 +13,7 @@
 		4F7BA1CA2F6A75F500D731ED /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 4F7BA1C92F6A75F500D731ED /* Realtime */; };
 		4F7BA1CC2F6A75F500D731ED /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 4F7BA1CB2F6A75F500D731ED /* Storage */; };
 		4F7BA1CE2F6A75F500D731ED /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 4F7BA1CD2F6A75F500D731ED /* Supabase */; };
+		4F8E7EB12F6E275700A79C31 /* LucideIcons in Frameworks */ = {isa = PBXBuildFile; productRef = 4F8E7EB02F6E275700A79C31 /* LucideIcons */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 			files = (
 				4F7BA1C82F6A75F500D731ED /* PostgREST in Frameworks */,
 				4F7BA1C62F6A75F500D731ED /* Functions in Frameworks */,
+				4F8E7EB12F6E275700A79C31 /* LucideIcons in Frameworks */,
 				4F7BA1CE2F6A75F500D731ED /* Supabase in Frameworks */,
 				4F7BA1C42F6A75F500D731ED /* Auth in Frameworks */,
 				4F7BA1CC2F6A75F500D731ED /* Storage in Frameworks */,
@@ -86,6 +88,7 @@
 				4F7BA1C92F6A75F500D731ED /* Realtime */,
 				4F7BA1CB2F6A75F500D731ED /* Storage */,
 				4F7BA1CD2F6A75F500D731ED /* Supabase */,
+				4F8E7EB02F6E275700A79C31 /* LucideIcons */,
 			);
 			productName = AttendQR;
 			productReference = 4FFB2B482F6917A200104C53 /* AttendQR.app */;
@@ -117,6 +120,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				4F7BA1C22F6A75F500D731ED /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				4F8E7EAF2F6E275700A79C31 /* XCRemoteSwiftPackageReference "lucide-icons-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4FFB2B492F6917A200104C53 /* Products */;
@@ -379,6 +383,14 @@
 				minimumVersion = 2.5.1;
 			};
 		};
+		4F8E7EAF2F6E275700A79C31 /* XCRemoteSwiftPackageReference "lucide-icons-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JakubMazur/lucide-icons-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.577.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -411,6 +423,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4F7BA1C22F6A75F500D731ED /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Supabase;
+		};
+		4F8E7EB02F6E275700A79C31 /* LucideIcons */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4F8E7EAF2F6E275700A79C31 /* XCRemoteSwiftPackageReference "lucide-icons-swift" */;
+			productName = LucideIcons;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
