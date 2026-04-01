@@ -3,17 +3,20 @@ import Charts
 
 /// Financial overview component with two pie charts: Income vs Expenses and Category Breakdown.
 struct FinancialPieChart: View {
-    let stats: DashboardStats
-    let expenses: [ExpenseModel]
+   // let stats: DashboardStats
+   // let expenses: [ExpenseModel]
     
     @Environment(\.colorScheme) var colorScheme
     private var isDark: Bool { colorScheme == .dark }
     
     // Calculate total for percentage calculation
-    private var totalIncome: Double { stats.totalSalesIncome }
-    private var totalExpenses: Double { stats.totalExpenses }
-    private var netIncome: Double { totalIncome - totalExpenses }
+ //   private var totalIncome: Double { stats.totalSalesIncome }
+ //   private var totalExpenses: Double { stats.totalExpenses }
+//   private var netIncome: Double { totalIncome - totalExpenses }
+    private var totalExpenses: Double = 0
+    private var totalIncome: Double = 0
     private var total: Double { totalIncome + totalExpenses }
+    private var netIncome: Double { totalIncome - totalExpenses }
     
     private let categoryColors: [String: Color] = [
         "Food": AppColors.warning,
@@ -142,7 +145,7 @@ struct FinancialPieChart: View {
     }
     
     private var expensesByCategoryChart: some View {
-        let categoryTotals = groupExpensesByCategory()
+       // let categoryTotals = groupExpensesByCategory()
         let totalExpensesByCategory = categoryTotals.values.reduce(0, +)
         
         if categoryTotals.isEmpty {
@@ -164,7 +167,7 @@ struct FinancialPieChart: View {
                 HStack(alignment: .top, spacing: 16) {
                     // Pie Chart
                     ZStack {
-                        if #available(iOS 17.0, *) {
+                      /*  if #available(iOS 17.0, *) {
                             Chart {
                                 ForEach(Array(categoryTotals.keys.enumerated()), id: \.offset) { index, category in
                                     let amount = categoryTotals[category] ?? 0
@@ -180,6 +183,8 @@ struct FinancialPieChart: View {
                         } else {
                             Text("iOS 17+ Chart Required")
                         }
+                       
+                       */
                     }
                     .frame(maxWidth: .infinity)
                     
@@ -210,13 +215,14 @@ struct FinancialPieChart: View {
         )
     }
     
-    private func groupExpensesByCategory() -> [String: Double] {
+  /*  private func groupExpensesByCategory() -> [String: Double] {
         var totals: [String: Double] = [:]
         for expense in expenses {
             totals[expense.category, default: 0] += expense.amount
         }
         return totals
     }
+   */
 }
 
 // MARK: - Legend Item
@@ -275,7 +281,7 @@ struct FinancialPieChart_Previews: PreviewProvider {
                     .font(.title.bold())
                     .padding(.top)
                 
-                FinancialPieChart(
+               /* FinancialPieChart(
                     stats: DashboardStats(
                         thisMonthSalary: 50000,
                         thisMonthExpenses: 25000,
@@ -327,7 +333,8 @@ struct FinancialPieChart_Previews: PreviewProvider {
                 )
                 .padding()
             }
+                */
         }
-        .background(Color(UIColor.systemGroupedBackground))
+       // .background(Color(UIColor.systemGroupedBackground))
     }
 }
