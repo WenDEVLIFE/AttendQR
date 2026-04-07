@@ -19,13 +19,14 @@ struct AttendQRApp: App {
                     case .splash:
                         SplashView()
                     case .login:
-                       SplashView()
+                       LoginView()
                     case .main:
-                        SplashView()
+                        UserHomeView()
                     }
                 }
                 .environmentObject(themeManager)
-                .preferredColorScheme(themeManager.isDarkMode ? .dark : .light)
+                .environmentObject(router)
+                .preferredColorScheme(.dark)
         }
     }
 }

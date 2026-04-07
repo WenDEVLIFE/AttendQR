@@ -43,12 +43,12 @@ struct StatCard: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(colorScheme == .dark ? .white.opacity(0.7) : AppColors.textSecondary)
+                    .foregroundColor(AppColors.textSecondary)
                     .lineLimit(2)
                 
                 Text(value)
                     .font(.system(size: 24, weight: .bold))
-                    .foregroundColor(colorScheme == .dark ? .white : AppColors.blue900)
+                    .foregroundColor(.white)
                     .minimumScaleFactor(0.5)
                     .lineLimit(1)
             }
@@ -57,8 +57,8 @@ struct StatCard: View {
         .frame(maxWidth: .infinity, minHeight: 140)
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(colorScheme == .dark ? AppColors.cardDark : .white)
-                .shadow(color: .black.opacity(colorScheme == .dark ? 0.3 : 0.1), radius: 8, x: 0, y: 2)
+                .fill(AppColors.cardDark)
+                .shadow(color: .black.opacity(0.3), radius: 8, x: 0, y: 2)
         )
         .background(
             RoundedRectangle(cornerRadius: 16)

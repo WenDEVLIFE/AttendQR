@@ -14,7 +14,7 @@ struct CustomButton: View {
             )
             .padding()
             .frame(maxWidth: .infinity)
-            .background(AppColors.primary)
+            .background(AppColors.accent)
             .cornerRadius(12)
         }
     }
