@@ -32,3 +32,32 @@ When you are tasked with creating a new feature:
 1. Try to utilize existing common components from `core/components/`. 
 2. Determine if the file belongs in `core/` (global utility) or `features/` (domain-specific).
 3. If an entire system needs refactoring, consult `core/utils` or `ThemeManager/AppColors` to ensure you are abiding by existing design norms.
+
+
+***Task***
+***Finished***
+[x] Login Screen
+[x] Splash Screen
+[x] Home Screen
+[x] QR Code Screen
+[x] Events Screen
+[x] Profile Screen
+[x] Bottom Navigation
+
+
+***Unfinished***
+[x] Register Screen for user only example full name, email, password, confirm password ui only
+[x] OTP Screen ui only
+[x] Forgot Password Screen ui only
+[x] Login function using supabase database
+[x] Register function using supabase database
+[x] Forgot Password function using supabase database 
+[x] Organizer Home Screen ui only
+[x] Organizer Events Screen ui only
+[x] Organizer Profile Screen ui only
+[x] Organizer Bottom Navigation ui only use the existing the bottom navigation
+[x] Allow the organizers to create, edit and delete events
+[x] Allow the organizers to detailed if its a payment or free with descritions, time, and quantity
+[x] logout functions both organizer and users
+[x] Allow the users to buy tickets for events
+[x] realtime data display in the organizers

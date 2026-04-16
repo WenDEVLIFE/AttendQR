@@ -13,6 +13,9 @@ import Combine
 enum AppRoute: Hashable {
     case splash
     case login
+    case register
+    case otp
+    case forgotPassword
     case main
 }
 

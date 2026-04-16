@@ -20,6 +20,12 @@ struct AttendQRApp: App {
                         SplashView()
                     case .login:
                        LoginView()
+                    case .register:
+                        RegisterView()
+                    case .otp:
+                        OTPView()
+                    case .forgotPassword:
+                        ForgotPasswordView()
                     case .main:
                         UserMainView()
                     }
