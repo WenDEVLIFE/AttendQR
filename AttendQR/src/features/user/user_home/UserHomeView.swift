@@ -5,7 +5,6 @@ struct UserHomeView: View {
     @EnvironmentObject var themeManager: ThemeManager
     @EnvironmentObject var router: Router
     @StateObject private var viewModel = UserHomeViewModel()
-    @State private var currentTab = 0
     
     var body: some View {
         ZStack {
@@ -26,16 +25,9 @@ struct UserHomeView: View {
                         // MARK: - Recent Activity
                         recentActivitySection
                     }
-                    .padding(.bottom, 100)
+                    .padding(.bottom, 120) // Extra padding for the bottom nav
                 }
             }
-            
-            // MARK: - Bottom Navigation
-            VStack {
-                Spacer()
-                CustomBottomNavigation(currentIndex: $currentTab)
-            }
-            .ignoresSafeArea(.keyboard, edges: .bottom)
         }
     }
     
