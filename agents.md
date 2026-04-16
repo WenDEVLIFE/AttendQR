@@ -46,16 +46,16 @@ When you are tasked with creating a new feature:
 [x] Register Screen for user only example full name, email, password, confirm password ui only
 [x] OTP Screen ui only
 [x] Forgot Password Screen ui only
+[x] Organizer Home Screen ui only
+[x] Organizer Events Screen ui only
+[x] Organizer Profile Screen ui only
+[x] Organizer Bottom Navigation ui only use the existing the bottom navigation
 
 
 ***Unfinished***
 [x] Login function using supabase database
 [x] Register function using supabase database
 [x] Forgot Password function using supabase database 
-[x] Organizer Home Screen ui only
-[x] Organizer Events Screen ui only
-[x] Organizer Profile Screen ui only
-[x] Organizer Bottom Navigation ui only use the existing the bottom navigation
 [x] Allow the organizers to create, edit and delete events
 [x] Allow the organizers to detailed if its a payment or free with descritions, time, and quantity
 [x] logout functions both organizer and users
