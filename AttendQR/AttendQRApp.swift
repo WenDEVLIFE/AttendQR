@@ -21,7 +21,7 @@ struct AttendQRApp: App {
                     case .login:
                        LoginView()
                     case .main:
-                        UserHomeView()
+                        UserMainView()
                     }
                 }
                 .environmentObject(themeManager)
