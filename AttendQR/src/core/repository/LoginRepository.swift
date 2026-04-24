@@ -1,30 +1,41 @@
 import Foundation
 import Combine
+import Supabase
 
-/// Repository handling authentication requests
+/// Model representing a user from the database
+struct UserSession: Codable {
+    let email: String
+    let username: String?
+    let full_name: String?
+    let role: String
+    let image_url: String?
+}
+
+/// Repository handling authentication requests via database tables
 class LoginRepository {
+    private let client = SupabaseManager.shared.client
     
-    // In a real implementation, you would initialize the Supabase client here:
-    // private let client = SupabaseClient(supabaseURL: URL(string: SupabaseConfig.url)!, supabaseKey: SupabaseConfig.anonKey)
-    
-    /// Simulated login request using Supabase secrets access
-    func login(email: String, password: String) -> AnyPublisher<Bool, Error> {
-        // Validation check for configuration
-        guard SupabaseConfig.isConfigured else {
-            return Fail(error: NSError(domain: "Config", code: 500, userInfo: [NSLocalizedDescriptionKey: "Supabase secrets are not configured in Secrets.plist"]))
-                .eraseToAnyPublisher()
-        }
-        
-        print("🚀 Initializing login with Supabase URL: \(SupabaseConfig.url)")
-        
-        // Simulating a network request with a 1.5s delay
-        return Future<Bool, Error> { promise in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                // Simple hardcoded logic for demonstration
-                if email.contains("@") && password.count >= 6 {
-                    promise(.success(true))
-                } else {
-                    let error = NSError(domain: "Auth", code: 401, userInfo: [NSLocalizedDescriptionKey: "Invalid credentials. Try using a valid email and at least 6 characters for the password."])
+    /// Login request using direct database query (Table-Based Auth)
+    func login(email: String, password: String) -> AnyPublisher<UserSession?, Error> {
+        Future { promise in
+            Task {
+                do {
+                    // Query the users table for matching credentials
+                    let results: [UserSession] = try await self.client.database
+                        .from("users")
+                        .select()
+                        .eq("email", value: email)
+                        .eq("password", value: password)
+                        .execute()
+                        .value
+                    
+                    if let user = results.first {
+                        promise(.success(user))
+                    } else {
+                        let error = NSError(domain: "Auth", code: 401, userInfo: [NSLocalizedDescriptionKey: "Invalid email or password."])
+                        promise(.failure(error))
+                    }
+                } catch {
                     promise(.failure(error))
                 }
             }

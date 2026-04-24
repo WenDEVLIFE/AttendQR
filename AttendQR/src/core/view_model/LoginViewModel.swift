@@ -7,6 +7,7 @@ class LoginViewModel: ObservableObject {
     @Published var password = ""
     @Published var isLoading = false
     @Published var errorMessage: String? = nil
+    @Published var session: UserSession? = nil
     @Published var loginSuccess = false
     
     private let repository: LoginRepository
@@ -33,13 +34,15 @@ class LoginViewModel: ObservableObject {
         errorMessage = nil
         
         repository.login(email: email, password: password)
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 self?.isLoading = false
                 if case .failure(let error) = completion {
                     self?.errorMessage = error.localizedDescription
                 }
-            }, receiveValue: { [weak self] success in
-                self?.loginSuccess = success
+            }, receiveValue: { [weak self] session in
+                self?.session = session
+                self?.loginSuccess = true
             })
             .store(in: &cancellables)
     }

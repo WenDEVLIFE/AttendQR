@@ -143,8 +143,9 @@ struct LoginView: View {
         .navigationBarHidden(true)
         #endif
         .onChange(of: viewModel.loginSuccess) { success in
-            if success {
-                router.navigate(to: .main)
+            if success, let session = viewModel.session {
+                router.session = session
+                router.navigateToMain()
             }
         }
     }

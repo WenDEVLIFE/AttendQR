@@ -24,6 +24,9 @@ enum AppRoute: Hashable {
 class Router: ObservableObject {
     @Published var currentRoot: AppRoute = .splash
     
+    // Authenticated session state
+    @Published var session: UserSession? = nil
+    
     // Transient state for registration flow
     @Published var pendingEmail: String = ""
     @Published var pendingUsername: String = ""
@@ -34,6 +37,20 @@ class Router: ObservableObject {
             withAnimation(.easeInOut(duration: 0.5)) {
                 self.currentRoot = route
             }
+        }
+    }
+    
+    /// Helper to navigate to the correct main dashboard based on role
+    func navigateToMain() {
+        guard let user = session else {
+            navigate(to: .login)
+            return
+        }
+        
+        if user.role.lowercased() == "organizer" {
+            navigate(to: .organizerMain)
+        } else {
+            navigate(to: .main)
         }
     }
 }
